@@ -13,6 +13,9 @@ class Grammar is Regex::Cursor {
         pir::store_dynamic_lex__vSP('$/', $match);
         $match;
     }
+
+	method new_match { ::Match.new() }
+	method new_array { [] }
 }
 
 our sub make($ast) {
