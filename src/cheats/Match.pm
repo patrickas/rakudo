@@ -12,4 +12,14 @@ class Match is Hash is Array {
     method orig() { "$!target" }
     has $.from;
     has $.to;
+
+	method Bool() {
+		$.from <= $.to;
+	}
+
+		method Str() {
+		self ?? self.orig.substr($.from, $.to - $.from) !! '';
+	}
 }
+
+# vim: ft=perl6
