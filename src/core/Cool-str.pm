@@ -180,7 +180,7 @@ augment class Cool {
     our multi method match(Regex $pat, :$c = 0, :$g) {
         if $g {
             my $cont = $c;
-            gather while my $m = Regex::Cursor.parse(self, :rule($pat), :c($cont)) {
+            gather while my $m = ::Grammar.parse(self, :rule($pat), :c($cont)) {
                 take $m;
                 if $m.to == $m.from {
                     $cont = $m.to + 1;
@@ -189,7 +189,7 @@ augment class Cool {
                 }
             }
         } else {
-            Regex::Cursor.parse(self, :rule($pat), :c($c));
+            ::Grammar.parse(self, :rule($pat), :c($c));
         }
     }
 
