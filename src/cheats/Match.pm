@@ -13,13 +13,17 @@ class Match is Hash is Array {
     has $.from;
     has $.to;
 
-	method Bool() {
-		$.from <= $.to;
-	}
+    method Bool() {
+        $.from <= $.to;
+    }
 
-		method Str() {
-		self ?? self.orig.substr($.from, $.to - $.from) !! '';
-	}
+    method Str() {
+        self ?? self.orig.substr($.from, $.to - $.from) !! '';
+    }
+
+    method chars() {
+        $.to - $.from max 0;
+    }
 }
 
 # vim: ft=perl6
