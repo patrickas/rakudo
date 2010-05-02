@@ -525,9 +525,28 @@ Gets the object's identity value
     .tailcall self.'shift'()
 .end
 
+.sub '' :vtable('push_pmc') :method
+    .param pmc obj
+    .tailcall self.'push'(obj)
+.end
+
 .sub 'list' :method
     .tailcall '&infix:<,>'(self)
 .end
+
+.sub '' :method :vtable('set_pmc_keyed')
+    .param string key
+    .param pmc value
+    $P0 = box key
+    .tailcall self.'evil_hash_setter'($P0, value)
+.end
+
+.sub '' :method :vtable('get_pmc_keyed')
+    .param string key
+    $P0 = box key
+    .tailcall self.'evil_hash_getter'($P0)
+.end
+
 
 # Local Variables:
 #   mode: pir
