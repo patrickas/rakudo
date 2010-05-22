@@ -14,15 +14,15 @@ class Match is Hash is Array {
     has $.to;
 
     method Bool() {
-        $.from <= $.to;
+        $!from <= $!to;
     }
 
     method Str() {
-        self ?? self.orig.substr($.from, $.to - $.from) !! '';
+        self ?? self.orig.substr($!from, $!to - $!from) !! '';
     }
 
     method chars() {
-        $.to - $.from max 0;
+        $!to - $!from max 0;
     }
 }
 
