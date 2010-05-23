@@ -19,4 +19,9 @@ augment class Str {
     method s() {
         self.e ?? pir::stat__ISI(self, 1) !! Any;
     }
+
+    # XXX: We have no $?ENC or $?NF compile-time constants yet.
+    method encode($encoding = 'UTF-8', $nf = 'default') {
+        return Buf.new;
+    }
 }
