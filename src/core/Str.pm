@@ -1,4 +1,4 @@
-augment class Str {
+augment class Str does Stringy {
     multi method Bool { ?(pir::istrue__IP(self)); }
 
     method Str() { self }
